@@ -12,7 +12,7 @@ import {TripsLayer} from '@deck.gl/geo-layers';
 const DATA_URL = {
   BUILDINGS:
     'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
-  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_users_demo/test/trips-chicago-individual-v5.txt' // eslint-disable-line
+  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/trips-chicago-v5.json' // eslint-disable-line
 };
 
 const ambientLight = new AmbientLight({
