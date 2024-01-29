@@ -46,7 +46,7 @@ const DEFAULT_THEME = {
 const INITIAL_VIEW_STATE = {
   longitude: -74,
   latitude: 40.72,
-  zoom: 13,
+  zoom: 14.5,
   pitch: 45,
   bearing: 0
 };
