@@ -65,12 +65,12 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 180,
+  trailLength = 500,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 1800, // unit corresponds to the timestamp in source data
-  animationSpeed = 1
+  loopLength = 2200, // unit corresponds to the timestamp in source data
+  animationSpeed = 2
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
