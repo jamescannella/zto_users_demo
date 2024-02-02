@@ -47,9 +47,9 @@ const DEFAULT_THEME = {
 const INITIAL_VIEW_STATE = {
   longitude: -87.63476,
   latitude: 41.87516,
-  zoom: 13.47,
-  pitch: -36.8,
-  bearing: 72
+  zoom: 14.47,
+  pitch: 72,
+  bearing: -36.8
 };
 
 const MAP_STYLE = 'https://api.maptiler.com/maps/cb574b7a-7703-4700-b037-40d45038440c/style.json?key=N8tRase5efDDDNAZ6tfz';
