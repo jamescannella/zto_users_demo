@@ -108,29 +108,6 @@ export default function App({
 
       shadowEnabled: false
     }),
-    new MVTLayer({ 
-      data: `https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=N8tRase5efDDDNAZ6tfz`,
-      loadOptions: {
-        mvt: {
-          layers: ['building']
-        }
-      },
-      minZoom: 0,
-      maxZoom: 15,
-      getLineColor: f => {
-        return f.properties.colour && chroma.valid(f.properties.colour) ? chroma(f.properties.colour).rgb() : [140, 170, 180]
-      },
-      getFillColor: f => {
-        return f.properties.colour && chroma.valid(f.properties.colour) ? chroma(f.properties.colour).rgb() : [140, 170, 180]
-      },
-      getLineWidth: 1,
-      lineWidthMinPixels: 1,
-      getElevation: f => {
-        return f.properties.render_height ? f.properties.render_height : 0
-      },
-      extruded: true,
-      wireframe: true
-    }),
     new PolygonLayer({
       id: 'buildings',
       data: buildings,
