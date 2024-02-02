@@ -13,7 +13,7 @@ import {TripsLayer} from '@deck.gl/geo-layers';
 const DATA_URL = {
   BUILDINGS:
     'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
-  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/trips-v7.json' // eslint-disable-line
+  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/zto-chicago-trips-half' // eslint-disable-line
 };
 
 const ambientLight = new AmbientLight({
@@ -24,7 +24,7 @@ const ambientLight = new AmbientLight({
 const pointLight = new PointLight({
   color: [255, 255, 255],
   intensity: 2.0,
-  position: [-74.05, 40.7, 8000]
+  position: [-87.6394, 41.8585]
 });
 
 const lightingEffect = new LightingEffect({ambientLight, pointLight});
@@ -45,11 +45,11 @@ const DEFAULT_THEME = {
 };
 
 const INITIAL_VIEW_STATE = {
-  longitude: -74,
-  latitude: 40.72,
-  zoom: 14.5,
-  pitch: 45,
-  bearing: 0
+  longitude: -87.6394,
+  latitude: 41.8585,
+  zoom: 17,
+  pitch: 80,
+  bearing: 65
 };
 
 const MAP_STYLE = 'https://api.maptiler.com/maps/cb574b7a-7703-4700-b037-40d45038440c/style.json?key=N8tRase5efDDDNAZ6tfz';
@@ -66,12 +66,12 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 500,
+  trailLength = 800,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 2200, // unit corresponds to the timestamp in source data
-  animationSpeed = 2
+  loopLength = 1800, // unit corresponds to the timestamp in source data
+  animationSpeed = 1
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
@@ -101,8 +101,8 @@ export default function App({
       getPath: d => d.path,
       getTimestamps: d => d.timestamps,
       getColor: d => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-      opacity: 0.3,
-      widthMinPixels: 2,
+      opacity: 0.5,
+      widthMinPixels: 3,
       rounded: true,
       trailLength,
       currentTime: time,
