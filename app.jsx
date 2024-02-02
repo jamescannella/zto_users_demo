@@ -1,5 +1,5 @@
 /* global window */
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {createRoot} from 'react-dom/client';
 import {Map} from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
@@ -65,12 +65,12 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 600,
+  trailLength = 650,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 1800, // unit corresponds to the timestamp in source data
-  animationSpeed = 1.5
+  loopLength = 2200, // unit corresponds to the timestamp in source data
+  animationSpeed = 1
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
