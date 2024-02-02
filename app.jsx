@@ -18,21 +18,21 @@ const DATA_URL = {
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
-  intensity: 1.0
+  intensity: 2.0
 });
 
 const pointLight = new PointLight({
   color: [255, 255, 255],
-  intensity: 2.0,
+  intensity: 4.0,
   position: [-87.63476, 41.87516]
 });
 
 const lightingEffect = new LightingEffect({ambientLight, pointLight});
 
 const material = {
-  ambient: 0.1,
+  ambient: 0.2,
   diffuse: 0.6,
-  shininess: 32,
+  shininess: 50,
   specularColor: [60, 64, 70]
 };
 
@@ -45,11 +45,11 @@ const DEFAULT_THEME = {
 };
 
 const INITIAL_VIEW_STATE = {
-  longitude: -87.62621,
-  latitude: 41.88027,
-  zoom: 15.2,
-  pitch: 60,
-  bearing: -35
+  longitude: -87.62906,
+  latitude: 41.8832,
+  zoom: 14.5,
+  pitch: 45,
+  bearing: 50
 };
 
 const MAP_STYLE = 'https://api.maptiler.com/maps/cb574b7a-7703-4700-b037-40d45038440c/style.json?key=N8tRase5efDDDNAZ6tfz';
@@ -101,7 +101,7 @@ export default function App({
       getPath: d => d.path,
       getTimestamps: d => d.timestamps,
       getColor: d => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-      opacity: 0.3,
+      opacity: 0.2,
       widthMinPixels: 3,
       rounded: true,
       trailLength,
