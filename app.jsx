@@ -47,9 +47,9 @@ const DEFAULT_THEME = {
 const INITIAL_VIEW_STATE = {
   longitude: -87.6394,
   latitude: 41.8585,
-  zoom: 17,
-  pitch: 80,
-  bearing: 95
+  zoom: 15,
+  pitch: 45,
+  bearing: 30
 };
 
 const MAP_STYLE = 'https://api.maptiler.com/maps/cb574b7a-7703-4700-b037-40d45038440c/style.json?key=N8tRase5efDDDNAZ6tfz';
@@ -71,7 +71,7 @@ export default function App({
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
   loopLength = 1800, // unit corresponds to the timestamp in source data
-  animationSpeed = 1
+  animationSpeed = 1.2
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
