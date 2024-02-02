@@ -1,5 +1,5 @@
 /* global window */
-import React, {useState, useEffect} from 'react';
+import * as React from 'react';
 import {createRoot} from 'react-dom/client';
 import {Map} from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
@@ -23,7 +23,7 @@ const ambientLight = new AmbientLight({
 const pointLight = new PointLight({
   color: [255, 255, 255],
   intensity: 2.0,
-  position: [-74.05, 40.7, 8000]
+  position: [-87.6394, 41.8585]
 });
 
 const lightingEffect = new LightingEffect({ambientLight, pointLight});
@@ -44,11 +44,11 @@ const DEFAULT_THEME = {
 };
 
 const INITIAL_VIEW_STATE = {
-  longitude: -74.011,
-  latitude: 40.702,
+  longitude: -87.6394,
+  latitude: 41.8585,
   zoom: 14,
-  pitch: 45,
-  bearing: 0
+  pitch: 69,
+  bearing: 69
 };
 
 const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json';
@@ -65,12 +65,12 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 800,
+  trailLength = 600,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 2400, // unit corresponds to the timestamp in source data
-  animationSpeed = 2
+  loopLength = 1800, // unit corresponds to the timestamp in source data
+  animationSpeed = 1.5
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
