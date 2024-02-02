@@ -47,7 +47,7 @@ const DEFAULT_THEME = {
 const INITIAL_VIEW_STATE = {
   longitude: -87.62621,
   latitude: 41.88027,
-  zoom: 15.47,
+  zoom: 14.8,
   pitch: 72,
   bearing: -36.8
 };
@@ -66,12 +66,12 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 800,
+  trailLength = 600,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 1800, // unit corresponds to the timestamp in source data
-  animationSpeed = 1.2
+  loopLength = 2000, // unit corresponds to the timestamp in source data
+  animationSpeed = 2
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
@@ -101,7 +101,7 @@ export default function App({
       getPath: d => d.path,
       getTimestamps: d => d.timestamps,
       getColor: d => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-      opacity: 0.5,
+      opacity: 0.3,
       widthMinPixels: 3,
       rounded: true,
       trailLength,
