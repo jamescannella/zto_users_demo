@@ -108,7 +108,7 @@ export default function App({
 
       shadowEnabled: false
     }),
-    new deck.MVTLayer({ 
+    new MVTLayer({ 
       data: `https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=N8tRase5efDDDNAZ6tfz`,
       loadOptions: {
         mvt: {
