@@ -13,7 +13,7 @@ import {TripsLayer} from '@deck.gl/geo-layers';
 const DATA_URL = {
   BUILDINGS:
     'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
-  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/zto-chicago-trips-half' // eslint-disable-line
+  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/zto-chicago-trips-full3.json' // eslint-disable-line
 };
 
 const ambientLight = new AmbientLight({
@@ -49,7 +49,7 @@ const INITIAL_VIEW_STATE = {
   latitude: 41.8585,
   zoom: 17,
   pitch: 80,
-  bearing: 65
+  bearing: 95
 };
 
 const MAP_STYLE = 'https://api.maptiler.com/maps/cb574b7a-7703-4700-b037-40d45038440c/style.json?key=N8tRase5efDDDNAZ6tfz';
