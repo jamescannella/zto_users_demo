@@ -19,21 +19,21 @@ const DATA_URL = {
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
-  intensity: 2.0
+  intensity: 4.0
 });
 
 const pointLight = new PointLight({
   color: [255, 255, 255],
-  intensity: 4.0,
+  intensity: 5.0,
   position: [-87.63476, 41.87516]
 });
 
 const lightingEffect = new LightingEffect({ambientLight, pointLight});
 
 const material = {
-  ambient: 0.2,
+  ambient: 0.4,
   diffuse: 0.6,
-  shininess: 50,
+  shininess: 80,
   specularColor: [60, 64, 70]
 };
 
@@ -71,11 +71,11 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 600,
+  trailLength = 1000,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 1800, // unit corresponds to the timestamp in source data
+  loopLength = 1700, // unit corresponds to the timestamp in source data
   animationSpeed = 2
 }) {
   const [time, setTime] = useState(0);
