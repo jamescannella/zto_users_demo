@@ -14,7 +14,7 @@ import {IconLayer} from '@deck.gl/layers';
 const DATA_URL = {
   BUILDINGS:
     'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
-  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/zto-chicago-trips-full3.json' // eslint-disable-line
+  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/zto-chicago-trips-expanded-full4.json' // eslint-disable-line
 };
 
 const ambientLight = new AmbientLight({
@@ -71,11 +71,11 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 1000,
+  trailLength = 1200,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 1700, // unit corresponds to the timestamp in source data
+  loopLength = 1800, // unit corresponds to the timestamp in source data
   animationSpeed = 2
 }) {
   const [time, setTime] = useState(0);
