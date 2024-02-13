@@ -48,7 +48,7 @@ const DEFAULT_THEME = {
 const INITIAL_VIEW_STATE = {
   longitude: -87.62906,
   latitude: 41.8832,
-  zoom: 15.5,
+  zoom: 15,
   pitch: 60,
   bearing: -36
 };
@@ -75,8 +75,8 @@ export default function App({
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 1400, // unit corresponds to the timestamp in source data
-  animationSpeed = 2
+  loopLength = 1800, // unit corresponds to the timestamp in source data
+  animationSpeed = 1.5
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
