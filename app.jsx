@@ -18,12 +18,12 @@ const DATA_URL = {
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
-  intensity: 5.0
+  intensity: 2.0
 });
 
 const pointLight = new PointLight({
   color: [255, 255, 255],
-  intensity: 15.0,
+  intensity: 5.0,
   position: [-87.63476, 41.87516]
 });
 
@@ -32,7 +32,7 @@ const lightingEffect = new LightingEffect({ambientLight, pointLight});
 const material = {
   ambient: 0.5,
   diffuse: 0.6,
-  shininess: 80,
+  shininess: 50,
   specularColor: [60, 64, 70]
 };
 
@@ -66,7 +66,7 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 1000,
+  trailLength = 800,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
@@ -99,7 +99,7 @@ export default function App({
       id: 'buildings',
       data: buildings,
       extruded: true,
-      wireframe: false,
+      wireframe: true,
       opacity: 0.5,
       getPolygon: f => f.polygon,
       getElevation: f => f.height,
@@ -112,13 +112,13 @@ export default function App({
       getPath: d => d.path,
       getTimestamps: d => d.timestamps,
       getColor: d => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-      opacity: 0.2,
+      opacity: 0.1,
       widthMinPixels: 3,
       rounded: true,
       trailLength,
       currentTime: time,
 
-      shadowEnabled: false
+      shadowEnabled: true
     }),
   ];
 
