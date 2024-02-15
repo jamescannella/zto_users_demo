@@ -14,17 +14,17 @@ import {TripsLayer} from '@deck.gl/geo-layers';
 const DATA_URL = {
   BUILDINGS:
     'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
-  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/zto-chicago-trips-expanded-full6.json' // eslint-disable-line
+  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/zto-chicago-trips-expanded-full7.json' // eslint-disable-line
 };
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
-  intensity: 1.0
+  intensity: 2.0
 });
 
 const pointLight = new PointLight({
   color: [255, 255, 255],
-  intensity: 2.0,
+  intensity: 10.0,
   position: [-87.63476, 41.87516]
 });
 
@@ -33,7 +33,7 @@ const lightingEffect = new LightingEffect({ambientLight, pointLight});
 const material = {
   ambient: 0.4,
   diffuse: 0.6,
-  shininess: 50,
+  shininess: 60,
   specularColor: [60, 64, 70]
 };
 
@@ -96,6 +96,17 @@ export default function App({
       stroked: false,
       getFillColor: [0, 0, 0, 0]
     }),
+    new PolygonLayer({
+      id: 'buildings',
+      data: buildings,
+      extruded: true,
+      wireframe: true,
+      opacity: 1,
+      getPolygon: f => f.polygon,
+      getElevation: f => f.height,
+      getFillColor: theme.buildingColor,
+      material: theme.material
+    }),
     new TripsLayer({
       id: 'trips',
       data: trips,
@@ -109,17 +120,6 @@ export default function App({
       currentTime: time,
 
       shadowEnabled: false
-    }),
-    new PolygonLayer({
-      id: 'buildings',
-      data: buildings,
-      extruded: true,
-      wireframe: true,
-      opacity: 1,
-      getPolygon: f => f.polygon,
-      getElevation: f => f.height,
-      getFillColor: theme.buildingColor,
-      material: theme.material
     })
 
   ];
