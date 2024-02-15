@@ -18,7 +18,7 @@ const DATA_URL = {
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
-  intensity: 2.0
+  intensity: 5.0
 });
 
 const pointLight = new PointLight({
@@ -30,7 +30,7 @@ const pointLight = new PointLight({
 const lightingEffect = new LightingEffect({ambientLight, pointLight});
 
 const material = {
-  ambient: 0.2,
+  ambient: 0.5,
   diffuse: 0.6,
   shininess: 80,
   specularColor: [60, 64, 70]
@@ -66,12 +66,12 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 1200,
+  trailLength = 1000,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
   loopLength = 1800, // unit corresponds to the timestamp in source data
-  animationSpeed = 2
+  animationSpeed = 2.5
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
@@ -95,6 +95,17 @@ export default function App({
       stroked: false,
       getFillColor: [0, 0, 0, 0]
     }),
+    new PolygonLayer({
+      id: 'buildings',
+      data: buildings,
+      extruded: true,
+      wireframe: false,
+      opacity: 0.5,
+      getPolygon: f => f.polygon,
+      getElevation: f => f.height,
+      getFillColor: theme.buildingColor,
+      material: theme.material
+    }),
     new TripsLayer({
       id: 'trips',
       data: trips,
@@ -109,17 +120,6 @@ export default function App({
 
       shadowEnabled: false
     }),
-    new PolygonLayer({
-      id: 'buildings',
-      data: buildings,
-      extruded: true,
-      wireframe: false,
-      opacity: 0.5,
-      getPolygon: f => f.polygon,
-      getElevation: f => f.height,
-      getFillColor: theme.buildingColor,
-      material: theme.material
-    })
   ];
 
   return (
