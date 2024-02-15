@@ -25,7 +25,7 @@ const ambientLight = new AmbientLight({
 
 const pointLight = new PointLight({
   color: [255, 255, 255],
-  intensity: 50,
+  intensity: 2.0,
   position: [-87.63476, 41.87516]
 });
 
@@ -49,9 +49,9 @@ const DEFAULT_THEME = {
 const INITIAL_VIEW_STATE = {
   longitude: -87.62906,
   latitude: 41.8832,
-  zoom: 15,
-  pitch: 70,
-  bearing: 45
+  zoom: 16,
+  pitch: 45,
+  bearing: 90
 };
 
 const ICON_MAPPING = {
