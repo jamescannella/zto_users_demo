@@ -13,7 +13,7 @@ import {TripsLayer} from '@deck.gl/geo-layers';
 
 const DATA_URL = {
   BUILDINGS:
-    'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
+    'https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=N8tRase5efDDDNAZ6tfz', // eslint-disable-line
   TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/zto-chicago-trips-full3%20v2.json' // eslint-disable-line
 };
 
@@ -96,28 +96,16 @@ export default function App({
       stroked: false,
       getFillColor: [0, 0, 0, 0]
     }),
-    new deck.MVTLayer({
-      data: `https://api.maptiler.com/maps/cb574b7a-7703-4700-b037-40d45038440c/style.json?key=N8tRase5efDDDNAZ6tfz`,
-      loadOptions: {
-        mvt: {
-          layers: ['building']
-        }
-      },
-      minZoom: 0,
-      maxZoom: 15,
-      getLineColor: f => {
-        return f.properties.colour && chroma.valid(f.properties.colour) ? chroma(f.properties.colour).rgb() : [140, 170, 180]
-      },
-      getFillColor: f => {
-        return f.properties.colour && chroma.valid(f.properties.colour) ? chroma(f.properties.colour).rgb() : [140, 170, 180]
-      },
-      getLineWidth: 1,
-      lineWidthMinPixels: 1,
-      getElevation: f => {
-        return f.properties.render_height ? f.properties.render_height : 0
-      },
+    new PolygonLayer({
+      id: 'buildings',
+      data: buildings,
       extruded: true,
-      wireframe: true
+      wireframe: true,
+      opacity: 1,
+      getPolygon: f => f.polygon,
+      getElevation: f => f.height,
+      getFillColor: theme.buildingColor,
+      material: theme.material
     }),
     new TripsLayer({
       id: 'trips',
