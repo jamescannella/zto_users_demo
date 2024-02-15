@@ -19,12 +19,12 @@ const DATA_URL = {
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
-  intensity: 15.0
+  intensity: 2.0
 });
 
 const pointLight = new PointLight({
   color: [255, 255, 255],
-  intensity: 15.0,
+  intensity: 2.0,
   position: [-87.63476, 41.87516]
 });
 
@@ -71,11 +71,11 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 1500,
+  trailLength = 800,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 1000, // unit corresponds to the timestamp in source data
+  loopLength = 1200, // unit corresponds to the timestamp in source data
   animationSpeed = 2
 }) {
   const [time, setTime] = useState(0);
@@ -100,32 +100,6 @@ export default function App({
       stroked: false,
       getFillColor: [0, 0, 0, 0]
     }),
-    new TripsLayer({
-      id: 'trips',
-      data: trips,
-      getPath: d => d.path,
-      getTimestamps: d => d.timestamps,
-      getColor: d => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-      opacity: 0.2,
-      widthMinPixels: 3,
-      rounded: true,
-      trailLength,
-      currentTime: time,
-
-      shadowEnabled: false
-    }),
-    new PolygonLayer({
-      id: 'buildings',
-      data: buildings,
-      extruded: true,
-      wireframe: false,
-      opacity: 0.5,
-      getPolygon: f => f.polygon,
-      getElevation: f => f.height,
-      getFillColor: theme.buildingColor,
-      material: theme.material
-    }),
-
     new IconLayer({
       id: 'icon-layer',
       data,
@@ -140,6 +114,31 @@ export default function App({
       getPosition: d => d.coordinates,
       getSize: d => 5,
       getColor: d => [Math.sqrt(d.exits), 140, 0]
+    }),
+    new TripsLayer({
+      id: 'trips',
+      data: trips,
+      getPath: d => d.path,
+      getTimestamps: d => d.timestamps,
+      getColor: d => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
+      opacity: 0.2,
+      widthMinPixels: 4,
+      rounded: true,
+      trailLength,
+      currentTime: time,
+
+      shadowEnabled: true
+    }),
+    new PolygonLayer({
+      id: 'buildings',
+      data: buildings,
+      extruded: true,
+      wireframe: false,
+      opacity: 0.5,
+      getPolygon: f => f.polygon,
+      getElevation: f => f.height,
+      getFillColor: theme.buildingColor,
+      material: theme.material
     })
 
   ];
