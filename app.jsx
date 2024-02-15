@@ -19,12 +19,12 @@ const DATA_URL = {
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
-  intensity: 4.0
+  intensity: 15.0
 });
 
 const pointLight = new PointLight({
   color: [255, 255, 255],
-  intensity: 5.0,
+  intensity: 15.0,
   position: [-87.63476, 41.87516]
 });
 
@@ -33,7 +33,7 @@ const lightingEffect = new LightingEffect({ambientLight, pointLight});
 const material = {
   ambient: 0.4,
   diffuse: 0.6,
-  shininess: 80,
+  shininess: 50,
   specularColor: [60, 64, 70]
 };
 
@@ -75,8 +75,8 @@ export default function App({
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 1800, // unit corresponds to the timestamp in source data
-  animationSpeed = 1.5
+  loopLength = 1000, // unit corresponds to the timestamp in source data
+  animationSpeed = 2
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
