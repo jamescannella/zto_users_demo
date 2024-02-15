@@ -67,7 +67,7 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 1400,
+  trailLength = 1000,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
@@ -95,17 +95,6 @@ export default function App({
       getPolygon: f => f,
       stroked: false,
       getFillColor: [0, 0, 0, 0]
-    }),
-    new PolygonLayer({
-      id: 'buildings',
-      data: buildings,
-      extruded: true,
-      wireframe: true,
-      opacity: 1,
-      getPolygon: f => f.polygon,
-      getElevation: f => f.height,
-      getFillColor: theme.buildingColor,
-      material: theme.material
     }),
     new deck.MVTLayer({
       data: `https://api.maptiler.com/maps/cb574b7a-7703-4700-b037-40d45038440c/style.json?key=N8tRase5efDDDNAZ6tfz`,
