@@ -13,7 +13,7 @@ import {TripsLayer} from '@deck.gl/geo-layers';
 const DATA_URL = {
   BUILDINGS:
     'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
-  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/zto-chicago-trips-full3.json' // eslint-disable-line
+  TRIPS: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/zto-chicago-trips-full3%20v2.json' // eslint-disable-line
 };
 
 const ambientLight = new AmbientLight({
@@ -23,7 +23,7 @@ const ambientLight = new AmbientLight({
 
 const pointLight = new PointLight({
   color: [255, 255, 255],
-  intensity: 4.0,
+  intensity: 15.0,
   position: [-87.63476, 41.87516]
 });
 
@@ -32,7 +32,7 @@ const lightingEffect = new LightingEffect({ambientLight, pointLight});
 const material = {
   ambient: 0.2,
   diffuse: 0.6,
-  shininess: 50,
+  shininess: 80,
   specularColor: [60, 64, 70]
 };
 
@@ -66,7 +66,7 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 600,
+  trailLength = 1200,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
