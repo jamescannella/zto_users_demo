@@ -11,6 +11,7 @@ import {IconLayer} from '@deck.gl/layers';
 
 
 // Source data CSV
+
 const DATA_URL = {
   BUILDINGS:
     'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
@@ -71,7 +72,7 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 800,
+  trailLength = 1000,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
@@ -115,6 +116,17 @@ export default function App({
       getSize: d => 5,
       getColor: d => [Math.sqrt(d.exits), 140, 0]
     }),
+    new PolygonLayer({
+      id: 'buildings',
+      data: buildings,
+      extruded: true,
+      wireframe: false,
+      opacity: 0.5,
+      getPolygon: f => f.polygon,
+      getElevation: f => f.height,
+      getFillColor: theme.buildingColor,
+      material: theme.material
+    }),
     new TripsLayer({
       id: 'trips',
       data: trips,
@@ -127,18 +139,7 @@ export default function App({
       trailLength,
       currentTime: time,
 
-      shadowEnabled: true
-    }),
-    new PolygonLayer({
-      id: 'buildings',
-      data: buildings,
-      extruded: true,
-      wireframe: false,
-      opacity: 0.5,
-      getPolygon: f => f.polygon,
-      getElevation: f => f.height,
-      getFillColor: theme.buildingColor,
-      material: theme.material
+      shadowEnabled: false
     })
 
   ];
