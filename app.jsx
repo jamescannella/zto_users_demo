@@ -72,12 +72,12 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 1000,
+  trailLength = 2000,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
   loopLength = 1200, // unit corresponds to the timestamp in source data
-  animationSpeed = 2
+  animationSpeed = 2.5
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
@@ -120,8 +120,8 @@ export default function App({
       id: 'buildings',
       data: buildings,
       extruded: true,
-      wireframe: false,
-      opacity: 0.5,
+      wireframe: true,
+      opacity: 1,
       getPolygon: f => f.polygon,
       getElevation: f => f.height,
       getFillColor: theme.buildingColor,
