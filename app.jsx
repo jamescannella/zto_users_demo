@@ -20,12 +20,12 @@ const DATA_URL = {
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
-  intensity: 2.0
+  intensity: 1.0
 });
 
 const pointLight = new PointLight({
   color: [255, 255, 255],
-  intensity: 2.0,
+  intensity: 50,
   position: [-87.63476, 41.87516]
 });
 
@@ -50,8 +50,8 @@ const INITIAL_VIEW_STATE = {
   longitude: -87.62906,
   latitude: 41.8832,
   zoom: 15,
-  pitch: 60,
-  bearing: -36
+  pitch: 70,
+  bearing: 45
 };
 
 const ICON_MAPPING = {
