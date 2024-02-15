@@ -7,7 +7,6 @@ import {AmbientLight, PointLight, LightingEffect} from '@deck.gl/core';
 import DeckGL from '@deck.gl/react';
 import {PolygonLayer} from '@deck.gl/layers';
 import {TripsLayer} from '@deck.gl/geo-layers';
-import {IconLayer} from '@deck.gl/layers';
 
 
 // Source data CSV
@@ -49,13 +48,9 @@ const DEFAULT_THEME = {
 const INITIAL_VIEW_STATE = {
   longitude: -87.62906,
   latitude: 41.8832,
-  zoom: 16,
-  pitch: 45,
-  bearing: 90
-};
-
-const ICON_MAPPING = {
-  marker: {x: 0, y: 0, width: 128, height: 128, mask: true}
+  zoom: 15,
+  pitch: 60,
+  bearing: 35
 };
 
 const MAP_STYLE = 'https://api.maptiler.com/maps/cb574b7a-7703-4700-b037-40d45038440c/style.json?key=N8tRase5efDDDNAZ6tfz';
@@ -72,11 +67,11 @@ const landCover = [
 export default function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
-  trailLength = 2000,
+  trailLength = 1400,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 1200, // unit corresponds to the timestamp in source data
+  loopLength = 1600, // unit corresponds to the timestamp in source data
   animationSpeed = 2.5
 }) {
   const [time, setTime] = useState(0);
@@ -101,32 +96,6 @@ export default function App({
       stroked: false,
       getFillColor: [0, 0, 0, 0]
     }),
-    new IconLayer({
-      id: 'icon-layer',
-      data,
-      pickable: true,
-      // iconAtlas and iconMapping are required
-      // getIcon: return a string
-      iconAtlas: 'https://raw.githubusercontent.com/jamescannella/zto_demo2/main/McDonalds%20Logo%20Icon%20small.png',
-      iconMapping: ICON_MAPPING,
-      getIcon: d => 'marker',
-  
-      sizeScale: 15,
-      getPosition: d => d.coordinates,
-      getSize: d => 5,
-      getColor: d => [Math.sqrt(d.exits), 140, 0]
-    }),
-    new PolygonLayer({
-      id: 'buildings',
-      data: buildings,
-      extruded: true,
-      wireframe: true,
-      opacity: 1,
-      getPolygon: f => f.polygon,
-      getElevation: f => f.height,
-      getFillColor: theme.buildingColor,
-      material: theme.material
-    }),
     new TripsLayer({
       id: 'trips',
       data: trips,
@@ -140,6 +109,17 @@ export default function App({
       currentTime: time,
 
       shadowEnabled: false
+    }),
+    new PolygonLayer({
+      id: 'buildings',
+      data: buildings,
+      extruded: true,
+      wireframe: true,
+      opacity: 1,
+      getPolygon: f => f.polygon,
+      getElevation: f => f.height,
+      getFillColor: theme.buildingColor,
+      material: theme.material
     })
 
   ];
