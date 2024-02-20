@@ -23,8 +23,8 @@ const ambientLight = new AmbientLight({
 
 const pointLight = new PointLight({
   color: [255, 255, 255],
-  intensity: 1.0,
-  position: [-87.63476, 41.87516]
+  intensity: 50.0,
+  position: [-87.53296, 41.58574]
 });
 
 const lightingEffect = new LightingEffect({ambientLight, pointLight});
@@ -45,11 +45,11 @@ const DEFAULT_THEME = {
 };
 
 const INITIAL_VIEW_STATE = {
-  longitude: -87.63369,
-  latitude: 41.88412,
-  zoom: 14.8,
-  pitch: 55,
-  bearing: 45
+  longitude: -87.63296,
+  latitude: 41.88574,
+  zoom: 14.9,
+  pitch: 60,
+  bearing: 52
 };
 
 const MAP_STYLE = 'https://api.maptiler.com/maps/cb574b7a-7703-4700-b037-40d45038440c/style.json?key=N8tRase5efDDDNAZ6tfz';
